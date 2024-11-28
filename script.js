@@ -148,7 +148,7 @@ function addToCart(event) {
 
     const productContainer = button.closest('.product');
     const quantityInput = productContainer.querySelector('input[type="number"]');
-    const quantity = parseInt(quantityInput.value, 10);
+    let quantity = parseInt(quantityInput.value, 10);
     const imageUrl = productContainer.querySelector('img').src; // Obtiene la URL de la imagen
 
     if (isNaN(quantity) || quantity <= 0) {
@@ -156,14 +156,49 @@ function addToCart(event) {
         return;
     }
 
+    // Verificar si el producto ya está en el carrito
     const productInCart = cart.find(item => item.name === name);
     if (productInCart) {
+        // Si el producto ya está en el carrito, agregar la cantidad
         productInCart.quantity += quantity;
     } else {
-        cart.push({ name, price, quantity, imageUrl }); // Agrega imageUrl al producto en el carrito
+        // Si el producto no está en el carrito, agregarlo
+        cart.push({ name, price, quantity, imageUrl });
     }
 
+    // Mostrar el mensaje "toast" de éxito
+    showToast(`${name} ha sido agregado al carrito con éxito!`);
+
+    // Resetear el contador de cantidad a 1
+    quantityInput.value = 1;
+
+    // Actualizar la visualización del carrito
     displayCart();
+}
+
+// Función para mostrar el toast
+function showToast(message) {
+    const toastContainer = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+
+    // Agregar el toast al contenedor
+    toastContainer.appendChild(toast);
+
+    // Hacer aparecer el toast
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+
+    // Eliminar el toast después de 3 segundos
+    setTimeout(() => {
+        toast.classList.remove('show');
+        // Eliminar el toast del DOM después de la animación
+        setTimeout(() => {
+            toast.remove();
+        }, 500);
+    }, 3000);
 }
 
 
