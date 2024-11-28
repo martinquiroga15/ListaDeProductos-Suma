@@ -76,6 +76,15 @@ products.forEach(product => {
 });
 
 
+document.getElementById('view-cart').addEventListener('click', () => {
+    const cart = document.getElementById('cart');
+    if (cart) {
+        cart.scrollIntoView({ behavior: 'smooth' });
+    }
+});
+
+
+
     // Agregar categorías a la barra de categorías
     const categoryList = document.getElementById('category-list');
     categories.forEach(category => {
