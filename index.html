@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tu Aplicación</title>
+</head>
+<body>
+    <header>
+        <h1>Mi Tienda - Suma Celulares</h1>
+    </header>
+    <div id="main-content">
+        <aside id="category-bar">
+            <h2>Categorías</h2>
+            <ul id="category-list"></ul>
+        </aside>
+
+        <main>
+            <div id="product-list"></div>
+        </main>
+
+        <aside id="order">
+            <div id="cart">
+                <h2>Carrito</h2>
+                <div id="preview"></div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-item">
+                    <p>Nombre</p>
+                    <input type="text" placeholder="Tu nombre" required>
+                </div>
+                <div class="input-group-item">
+                    <p>Número de contacto</p>
+                    <input type="text" placeholder="Tu número de contacto" required>
+                </div>
+                <div class="input-group-item">
+                    <p>Información adicional</p>
+                    <textarea placeholder="Detalles adicionales"></textarea>
+                </div>
+            </div>
+            <button id="send-order" style="display: none;">Enviar Pedido</button>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
