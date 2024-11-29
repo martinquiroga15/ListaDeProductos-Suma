@@ -91,7 +91,7 @@ document.getElementById('view-cart').addEventListener('click', () => {
         const li = document.createElement('li');
         li.textContent = category;
         li.style.cursor = 'pointer';
-        li.addEventListener('click', () => scrollToCategory(category)); // Mover a la categoría al hacer clic
+        li.addEventListener('click', () => scrollToCategory(category)); 
         categoryList.appendChild(li);
     });
 
@@ -269,7 +269,7 @@ const additionalInfo = additionalInfoInput.value.trim();
     
     const cartMessage = cart.map(item => 
         `${item.name} - Cantidad: ${item.quantity} - Precio: $${(item.price * item.quantity).toFixed(2)}`
-    ).join('\n');
+    ).join('\n\n');
 
     
     const message = `Nombre: ${name}\nNúmero de contacto: ${contactNumber}\nInformación adicional: ${additionalInfo}\n\nPedido:\n${cartMessage}`;
