@@ -21,6 +21,10 @@ header {
     font-weight: bold;
 }
 
+main{
+    height: 100%;
+}
+
 /* Main layout */
 #main-content {
     display: flex;
@@ -34,8 +38,8 @@ header {
     background-color: #ffe6b3;
     padding: 20px;
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
     list-style: none;
+    
     
 }
 
@@ -61,9 +65,27 @@ header {
     background-color: #e68a00; /* Fondo más oscuro al hacer clic */
 }
 
+
+#search-bar {
+    position: sticky; 
+    top: 0;
+    z-index: 10;
+    background-color: #ffe6b3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50%;
+}
+
+#search-input {
+    font-size: 16px;
+    border: 2px solid #ffa41c;
+    border-radius: 5px;
+    padding: 10px;
+    width: 50%
+}
+
+
 #product-list {
     flex: 1;
-    overflow-y:scroll; 
     padding: 20px;
     height: 100%;
 }
