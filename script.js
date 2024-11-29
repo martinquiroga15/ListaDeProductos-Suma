@@ -264,6 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
     document.querySelector('main').prepend(searchBar);  // Insertamos la barra de búsqueda al principio del main
 
 
