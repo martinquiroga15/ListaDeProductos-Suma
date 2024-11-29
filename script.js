@@ -87,6 +87,10 @@ function displayProducts(products) {
     });
 }
 
+
+
+
+
 function scrollToCategory(category) {
     const categoryId = category.replace(/\s+/g, '-').toLowerCase();
     const categoryElement = document.getElementById(categoryId);
@@ -94,6 +98,15 @@ function scrollToCategory(category) {
         categoryElement.scrollIntoView({ behavior: 'smooth' }); // Desplazamiento suave
     }
 }
+
+
+document.getElementById('view-cart').addEventListener('click', function() {
+    const cartSection = document.getElementById('preview');  // Aquí estamos apuntando a la sección del carrito
+    if (cartSection) {
+        cartSection.scrollIntoView({ behavior: 'smooth' });  // Desplazamiento suave hacia el carrito
+    }
+});
+
 
 
 function showImage(imageUrl) {
