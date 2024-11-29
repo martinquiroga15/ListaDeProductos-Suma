@@ -91,9 +91,10 @@ function scrollToCategory(category) {
     const categoryId = category.replace(/\s+/g, '-').toLowerCase();
     const categoryElement = document.getElementById(categoryId);
     if (categoryElement) {
-        categoryElement.scrollIntoView({ behavior: 'auto' }); // Ir directamente sin animación
+        categoryElement.scrollIntoView({ behavior: 'smooth' }); // Desplazamiento suave
     }
 }
+
 
 function showImage(imageUrl) {
     const modal = document.createElement('div');
