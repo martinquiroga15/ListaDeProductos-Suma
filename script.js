@@ -112,6 +112,8 @@ function scrollToCategory(category) {
 }
 
 
+
+
 function showImage(imageUrl) {
     const modal = document.createElement('div');
     modal.style.position = 'fixed';
