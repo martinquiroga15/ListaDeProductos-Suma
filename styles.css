@@ -272,4 +272,8 @@ button {
         margin-top: 60px; /* Espacio igual a la altura de la barra fija */
         flex-direction: column; /* Mantener diseño de columna para el contenido */
     }
+
+    header{
+        margin-top: 60px;
+    }
 }
