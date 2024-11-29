@@ -233,3 +233,43 @@ button {
         display: block; /* Visible en pantallas pequeñas */
     }
 }
+
+
+@media (max-width: 768px) {
+    #category-bar {
+        position: fixed; /* Fijo en la parte superior */
+        top: 0;
+        left: 0;
+        width: 100%; /* Ocupa todo el ancho */
+        height: auto; /* Altura automática para ajustarse a su contenido */
+        display: flex; /* Cambiar a diseño de fila */
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start; /* Alineación horizontal */
+        background-color: #ffe6b3; /* Mantener el color */
+        z-index: 1000; /* Para asegurarse de que esté por encima del contenido */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacarlo */
+        padding: 10px; /* Espaciado interno */
+        overflow-x: auto; /* Scroll horizontal si hay muchas categorías */
+    }
+
+    #category-list {
+        display: flex; /* Mostrar categorías en fila */
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        gap: 10px; /* Espaciado entre categorías */
+    }
+
+    #category-list li {
+        margin: 0; /* Eliminar margen */
+        padding: 10px 15px; /* Mantener el diseño */
+        flex-shrink: 0; /* Evitar que se reduzcan */
+    }
+
+    #main-content {
+        margin-top: 60px; /* Espacio igual a la altura de la barra fija */
+        flex-direction: column; /* Mantener diseño de columna para el contenido */
+    }
+}
