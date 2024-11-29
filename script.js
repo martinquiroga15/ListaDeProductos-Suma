@@ -2,7 +2,7 @@ const sheetID = '1z6JirAtCx9_gVNNUMXfDnvaVhcY55ZZuYh5Du0IOfe0';
 const apiKey = 'AIzaSyACyo3-x-Fr2DHfHxRypRFPGzPjOIz3sIc';
 const sheetURL = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/lista?key=${apiKey}`;
 
-let cart = []; // Carrito de productos
+let cart = []; 
 
 fetch(sheetURL)
     .then(response => {
@@ -26,24 +26,24 @@ fetch(sheetURL)
     })
     .catch(error => console.error('Error al cargar productos:', error));
 
-// Función para mostrar productos en la página
+
 function displayProducts(products) {
     const productList = document.getElementById('product-list');
     productList.innerHTML = '';
 
-    let currentCategory = ''; // Para rastrear y mostrar la categoría actual
-    let categories = new Set(); // Para almacenar categorías únicas
+    let currentCategory = ''; 
+    let categories = new Set(); 
 
-    // URL de imagen por defecto
+    
 const defaultImageUrl = "./assets/no-image.avif"
 
 products.forEach(product => {
     const category = product['product category'];
 
-    // Agregar la categoría a la lista de categorías
+    
     categories.add(category);
 
-    // Verificar si se debe agregar el título de categoría
+    
     if (category !== currentCategory) {
         currentCategory = category;
         const categoryTitle = document.createElement('h2');
@@ -55,7 +55,7 @@ products.forEach(product => {
     const productDiv = document.createElement('div');
     productDiv.className = 'product';
     
-    // Verificar si la imagen está disponible; si no, usar la imagen por defecto
+    
     const imageUrl = product['image'] || defaultImageUrl;
 
     productDiv.innerHTML = `
@@ -85,7 +85,7 @@ document.getElementById('view-cart').addEventListener('click', () => {
 
 
 
-    // Agregar categorías a la barra de categorías
+    
     const categoryList = document.getElementById('category-list');
     categories.forEach(category => {
         const li = document.createElement('li');
@@ -95,14 +95,14 @@ document.getElementById('view-cart').addEventListener('click', () => {
         categoryList.appendChild(li);
     });
 
-    // Agregar eventos a los botones de agregar al carrito
+    
     const buttons = document.querySelectorAll('.add-to-cart');
     buttons.forEach(button => {
         button.addEventListener('click', addToCart);
     });
 }
 
-// Función para desplazarse a la categoría
+
 function scrollToCategory(category) {
     const categoryId = category.replace(/\s+/g, '-').toLowerCase(); // Convertir a ID
     const categoryElement = document.getElementById(categoryId);
@@ -111,7 +111,7 @@ function scrollToCategory(category) {
     }
 }
 
-// Función para mostrar la imagen en grande
+
 function showImage(imageUrl) {
     const modal = document.createElement('div');
     modal.style.position = 'fixed';
@@ -133,14 +133,14 @@ function showImage(imageUrl) {
     modal.appendChild(img);
 
     modal.addEventListener('click', () => {
-        modal.remove(); // Elimina el modal al hacer clic
+        modal.remove(); 
     });
 
     document.body.appendChild(modal);
 }
 
 
-// Función para agregar productos al carrito
+
 function addToCart(event) {
     const button = event.target;
     const name = button.getAttribute('data-name');
@@ -149,56 +149,56 @@ function addToCart(event) {
     const productContainer = button.closest('.product');
     const quantityInput = productContainer.querySelector('input[type="number"]');
     let quantity = parseInt(quantityInput.value, 10);
-    const imageUrl = productContainer.querySelector('img').src; // Obtiene la URL de la imagen
+    const imageUrl = productContainer.querySelector('img').src; 
 
     if (isNaN(quantity) || quantity <= 0) {
         alert("Por favor, ingresa una cantidad válida.");
         return;
     }
 
-    // Verificar si el producto ya está en el carrito
+    
     const productInCart = cart.find(item => item.name === name);
     if (productInCart) {
-        // Si el producto ya está en el carrito, agregar la cantidad
+        
         productInCart.quantity += quantity;
     } else {
-        // Si el producto no está en el carrito, agregarlo
+        
         cart.push({ name, price, quantity, imageUrl });
     }
 
-    // Mostrar el mensaje "toast" de éxito
+    
     showToast(`${name} ha sido agregado al carrito con éxito!`);
 
-    // Resetear el contador de cantidad a 1
+    
     quantityInput.value = 1;
 
-    // Actualizar la visualización del carrito
+    
     displayCart();
 }
 
-// Función para mostrar el toast
+
 function showToast(message) {
     const toastContainer = document.getElementById('toast-container');
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.textContent = message;
 
-    // Agregar el toast al contenedor
+    
     toastContainer.appendChild(toast);
 
-    // Hacer aparecer el toast
+    
     setTimeout(() => {
         toast.classList.add('show');
     }, 10);
 
-    // Eliminar el toast después de 3 segundos
+    
     setTimeout(() => {
         toast.classList.remove('show');
-        // Eliminar el toast del DOM después de la animación
+        
         setTimeout(() => {
             toast.remove();
         }, 500);
-    }, 3000);
+    },2000);
 }
 
 
@@ -206,11 +206,11 @@ function displayCart() {
     const preview = document.getElementById('preview');
    
     
-    let total = 0; // Variable para almacenar el total del pedido
+    let total = 0; 
     
     preview.innerHTML = cart.map(item => {
         const subtotal = item.price * item.quantity;
-        total += subtotal; // Sumar el subtotal al total general
+        total += subtotal; 
 
         return `
             <div class="product-cart" style="border-bottom: 1px solid #ccc; padding: 5px; display: flex; align-items: center;
@@ -225,7 +225,7 @@ function displayCart() {
         `;
     }).join('');
 
-    // Agregar el total al final del carrito
+  
     preview.innerHTML +=
     `
         <div style="padding-top: 10px; font-weight: bold;">
@@ -250,20 +250,29 @@ document.getElementById('send-order').addEventListener('click', () => {
         return;
     }
 
-    // Captura de los datos de input-group
-    const name = document.querySelector('.input-group-item input[placeholder="Your name"]').value;
-    const contactNumber = document.querySelector('.input-group-item input[placeholder="Enter contact number"]').value;
-    const additionalInfo = document.querySelector('.input-group-item textarea').value;
+    const nameInput = document.querySelector('.input-group-item input[placeholder="Tu nombre"]');
+const contactNumberInput = document.querySelector('.input-group-item input[placeholder="Tu número de contacto"]');
+const additionalInfoInput = document.querySelector('.input-group-item textarea');
 
-    // Construcción del mensaje del carrito
+if (!nameInput || !contactNumberInput || !additionalInfoInput) {
+    console.error("Uno o más campos no se encontraron en el DOM.");
+    return;
+}
+
+const name = nameInput.value.trim();
+const contactNumber = contactNumberInput.value.trim();
+const additionalInfo = additionalInfoInput.value.trim();
+
+
+    
     const cartMessage = cart.map(item => 
         `${item.name} - Cantidad: ${item.quantity} - Precio: $${(item.price * item.quantity).toFixed(2)}`
     ).join('\n');
 
-    // Agregar la información de contacto al mensaje
+    
     const message = `Nombre: ${name}\nNúmero de contacto: ${contactNumber}\nInformación adicional: ${additionalInfo}\n\nPedido:\n${cartMessage}`;
 
-    const whatsappURL = `https://wa.me/3416154511?text=${encodeURIComponent(message)}`;
+    const whatsappURL = `https://wa.me/3416103054?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
 });
 
