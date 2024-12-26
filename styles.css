@@ -1,4 +1,19 @@
-/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+html {
+    overflow-x: hidden; 
+  }
+
+.link{
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}
+
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -10,15 +25,24 @@ body {
     overflow-y: scroll;
 }
 
-/* Header */
+
 header {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
     background-color: #ffa41c;
     color: white;
     width: 100%;
     padding: 15px 20px;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
+    height: 150px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+header img {
+    max-height: 100%;
+    max-width: 100%; 
+    object-fit: contain; 
+    margin: 10px;
 }
 
 main{
@@ -45,24 +69,24 @@ main{
 
 #category-list li {
     list-style: none;
-    padding: 10px 15px; /* Espaciado interno */
-    margin-bottom: 10px; /* Espaciado entre elementos */
-    background-color: #ffebcc; /* Fondo suave */
-    color: #333; /* Texto oscuro para buen contraste */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    transition: all 0.3s ease; /* Suaviza los cambios al interactuar */
+    padding: 10px 15px; 
+    margin-bottom: 10px;
+    background-color: #ffebcc; 
+    color: #333; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
 }
 
 #category-list li:hover {
-    background-color: #ffa41c; /* Fondo más llamativo al pasar el mouse */
-    color: white; /* Texto blanco para contraste */
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    background-color: #ffa41c; 
+    color: white;
+    transform: scale(1.05);
 }
 
 #category-list li:active {
-    background-color: #e68a00; /* Fondo más oscuro al hacer clic */
+    background-color: #e68a00;
 }
 
 
@@ -138,7 +162,7 @@ main{
 
 /* Cart styles */
 #cart {
-    background-color: #ffe6b3;
+    background-color: white;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 20px;
@@ -198,9 +222,9 @@ button {
 }
 
 
-/* Estilos para el toast */
+
 .toast {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50; 
     color: white;
     padding: 10px 20px;
     margin-bottom: 10px;
@@ -219,6 +243,16 @@ button {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        overflow-x: hidden; /* También desactiva el scroll horizontal a nivel raíz */
+      }
+
     #main-content {
         flex-direction: column;
     }
@@ -226,6 +260,7 @@ button {
     #category-bar {
         width: 100%;
         height: auto;
+        overflow-x: auto;
     }
     
     #product-list {
@@ -250,52 +285,55 @@ button {
         flex-direction: column;
     }
 }
-@media (max-width: 768px) {
-    #view-cart {
-        display: block; /* Visible en pantallas pequeñas */
-    }
-}
-
 
 @media (max-width: 768px) {
+
+    html {
+        overflow-x: hidden; 
+      }
     #category-bar {
-        position: fixed; /* Fijo en la parte superior */
+        position: fixed; 
         top: 0;
         left: 0;
-        width: 100%; /* Ocupa todo el ancho */
-        height: auto; /* Altura automática para ajustarse a su contenido */
-        display: flex; /* Cambiar a diseño de fila */
+        max-width: 100%; 
+        height: auto; 
+        display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: flex-start; /* Alineación horizontal */
-        background-color: #ffe6b3; /* Mantener el color */
-        z-index: 1000; /* Para asegurarse de que esté por encima del contenido */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacarlo */
-        padding: 10px; /* Espaciado interno */
-        overflow-x: auto; /* Scroll horizontal si hay muchas categorías */
+        justify-content: flex-start; 
+        background-color: #ffe6b3;
+        z-index: 1000; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        padding: 10px; 
+        overflow-x: auto;
     }
 
     #category-list {
-        display: flex; /* Mostrar categorías en fila */
+        display: flex; 
         flex-direction: row;
         padding: 0;
         margin: 0;
         list-style: none;
-        gap: 10px; /* Espaciado entre categorías */
+        gap: 10px; 
     }
 
     #category-list li {
-        margin: 0; /* Eliminar margen */
-        padding: 10px 15px; /* Mantener el diseño */
-        flex-shrink: 0; /* Evitar que se reduzcan */
+        margin: 0; 
+        padding: 10px 15px; 
+        flex-shrink: 0; 
     }
 
     #main-content {
-        margin-top: 60px; /* Espacio igual a la altura de la barra fija */
-        flex-direction: column; /* Mantener diseño de columna para el contenido */
+        margin-top: 60px;
+        flex-direction: column; 
     }
 
     header{
         margin-top: 60px;
     }
 }
+
+
+
+
+
