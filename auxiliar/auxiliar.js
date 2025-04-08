@@ -1,7 +1,7 @@
 // const sheetID = '1z6JirAtCx9_gVNNUMXfDnvaVhcY55ZZuYh5Du0IOfe0';
 const sheetID = '1JHTsFnzvEwoc7pQhzIr4EZ4hRPiD0JuS9H_iN9SakS4'
 const apiKey = 'AIzaSyACyo3-x-Fr2DHfHxRypRFPGzPjOIz3sIc';
-const sheetURL = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/catalogo?key=${apiKey}`;
+const sheetURL = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/auxiliar?key=${apiKey}`;
 
 let cart = [];
 let allProducts = []; 
@@ -46,7 +46,7 @@ function displayProducts(products) {
             currentCategory = category;
             const categoryTitle = document.createElement('h2');
             categoryTitle.textContent = category;
-            categoryTitle.id = category.replace(/\s+/g, '-').toLowerCase(); // Asignar ID a la categoría
+            categoryTitle.id = category.replace(/\s+/g, '-').toLowerCase(); 
             productList.appendChild(categoryTitle);
         }
 
@@ -95,15 +95,15 @@ function scrollToCategory(category) {
     const categoryId = category.replace(/\s+/g, '-').toLowerCase();
     const categoryElement = document.getElementById(categoryId);
     if (categoryElement) {
-        categoryElement.scrollIntoView({ behavior: 'smooth' }); // Desplazamiento suave
+        categoryElement.scrollIntoView({ behavior: 'smooth' }); 
     }
 }
 
 
 document.getElementById('view-cart').addEventListener('click', function() {
-    const cartSection = document.getElementById('preview');  // Aquí estamos apuntando a la sección del carrito
+    const cartSection = document.getElementById('preview');  
     if (cartSection) {
-        cartSection.scrollIntoView({ behavior: 'smooth' });  // Desplazamiento suave hacia el carrito
+        cartSection.scrollIntoView({ behavior: 'smooth' });  
     }
 });
 
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Agregar la barra de búsqueda al principio de la sección main
     const mainSection = document.querySelector('main');
-    mainSection.insertBefore(searchBar, mainSection.firstChild);  // Insertamos antes del primer elemento en main
+    mainSection.insertBefore(searchBar, mainSection.firstChild);  
 
     // Evento de búsqueda
     searchBar.addEventListener('input', event => {
@@ -266,12 +266,11 @@ document.addEventListener('DOMContentLoaded', function() {
         );
         displayProducts(filteredProducts);
 
-        // Ir al primer producto que coincida con la búsqueda sin animación
         if (filteredProducts.length > 0) {
             const firstProductId = filteredProducts[0]['product name'].replace(/\s+/g, '-').toLowerCase();
             const firstProductElement = document.getElementById(firstProductId);
             if (firstProductElement) {
-                firstProductElement.scrollIntoView({ behavior: 'auto' }); // Ir directamente sin animación
+                firstProductElement.scrollIntoView({ behavior: 'auto' }); 
             }
         }
     });
@@ -279,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    document.querySelector('main').prepend(searchBar);  // Insertamos la barra de búsqueda al principio del main
+    document.querySelector('main').prepend(searchBar);  
 
 
 
